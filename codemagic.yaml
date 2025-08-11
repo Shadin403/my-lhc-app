@@ -3,7 +3,8 @@ workflows:
     name: Android Workflow
     instance_type: mac_mini_m1
     environment:
-      flutter: stable
+      flutter: 3.10.6
+      java: 11
       groups:
         - google-services
     scripts:
@@ -11,8 +12,6 @@ workflows:
         script: echo $GSERVICES_JSON_B64 | base64 --decode > $CM_BUILD_DIR/android/app/google-services.json
       - name: Change package name
         script: sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
-      - name: Fix app_plugin_loader (Delete problematic line)
-        script: sed -i.bak '/app_plugin_loader.gradle/d' $CM_BUILD_DIR/android/app/build.gradle
       - name: Get Flutter packages
         script: flutter pub get
       - name: Build APK
