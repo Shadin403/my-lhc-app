@@ -13,11 +13,14 @@ workflows:
       - name: Change package name
         script: |
           sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
+      - name: Remove release signing requirement (FINAL FIX)
+        script: |
+          sed -i.bak "s/signingConfig signingConfigs.release//g" $CM_BUILD_DIR/android/app/build.gradle
       - name: Get Flutter packages
         script: |
           flutter pub get
-      - name: Build Debug APK (Safest Method)
+      - name: Build Unsigned Release APK
         script: |
-          flutter build apk --debug
+          flutter build apk --release
     artifacts:
-      - build/app/outputs/flutter-apk/app-debug.apk
+      - build/app/outputs/flutter-apk/app-release.apk
