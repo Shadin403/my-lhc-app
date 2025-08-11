@@ -14,29 +14,6 @@ workflows:
       - name: Change package name
         script: |
           sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
-      - name: Add dependency overrides to fix ALL conflicts (FINAL ATTEMPT)
-        script: |
-          # This will override all major conflicting packages to versions compatible with Flutter 3.10.6
-          echo "
-          dependency_overrides:
-            collection: 1.17.1
-            path: 1.8.3
-            rxdart: 0.27.7
-            mime: 1.0.4
-            file_picker: 5.5.0
-            flutter_downloader: 1.11.0
-            toastification: 1.2.0
-            path_provider: 2.1.1
-            cached_network_image: 3.2.3
-            flutter_cache_manager: 3.3.1
-            shared_preferences: 2.2.2
-            permission_handler: 11.0.1
-            url_launcher: 6.2.1
-            http: 1.1.0
-            image_picker: 1.0.4
-            flutter_sound: 9.2.13
-            webview_flutter: 4.4.2
-          " >> $CM_BUILD_DIR/pubspec.yaml
       - name: Get Flutter packages
         script: |
           flutter pub get
