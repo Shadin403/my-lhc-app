@@ -31,7 +31,7 @@ dependencies:
   file_picker: 5.5.0
   mime: 1.0.4
   photo_view: 0.14.0
-  voice_message_package: 1.0.9
+  voice_message_package: 1.0.8  # <--- এই পরিবর্তনটি করা হয়েছে
   just_audio: 0.9.34
   flutter_downloader: 1.11.0
   cached_network_image: 3.2.3
