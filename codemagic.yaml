@@ -1,0 +1,19 @@
+workflows:
+  android-workflow:
+    name: Android Workflow
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      groups:
+        - google-services
+    scripts:
+      - name: Decode google-services.json
+        script: echo $GSERVICES_JSON_B64 | base64 --decode > $CM_BUILD_DIR/android/app/google-services.json
+      - name: Change package name
+        script: sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Build APK
+        script: flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
