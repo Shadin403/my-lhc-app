@@ -2,101 +2,61 @@ name: livehelp
 description: A messenger for Live Helper Chat
 version: 1.0.25+43
 
-
 environment:
   sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
- 
-  sqflite: ^2.0.2 #sqlite support
-  path_provider: ^2.1.4
-  intl: ^0.19.0
-  firebase_core: ^3.5.0
-  firebase_messaging: ^15.1.2
-  flutter_local_notifications: ^17.2.3
-  rxdart: ^0.28.0
-  after_layout: ^1.1.0
-  http: ^1.2.2
-  flutter_speed_dial: ^7.0.0
-  flutter_html: ^3.0.0-beta.2
-  url_launcher: ^6.0.18
-  equatable: ^2.0.3
-  flutter_bloc: ^8.0.1
-  flutter_linkify: ^6.0.0
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+
+  sqflite: 2.2.8+4
+  path_provider: 2.0.15
+  intl: 0.17.0
+  firebase_core: 2.15.1
+  firebase_messaging: 14.6.7
+  flutter_local_notifications: 15.1.1
+  rxdart: 0.27.7
+  after_layout: 1.2.0
+  http: 0.13.6
+  flutter_speed_dial: 6.2.0
+  flutter_html: 3.0.0-beta.2
+  url_launcher: 6.1.14
+  equatable: 2.0.5
+  flutter_bloc: 8.1.2
+  flutter_linkify: 5.0.2
   cupertino_icons: ^1.0.2
-  record: ^5.1.2
-  toastification: 2.3.0 
-  http_parser: ^4.0.2
-  file_picker: ^8.1.2
-  mime: ^2.0.0
-  photo_view: ^0.15.0
-  voice_message_package: ^2.2.1
-  just_audio: ^0.9.41
-  flutter_downloader: ^1.12.0
-  cached_network_image: ^3.4.1
-  flutter_file_downloader: ^2.0.0
-  open_file: ^3.5.8
-  webview_flutter: ^4.10.0
-  shared_preferences: ^2.3.2
+  record: 4.4.4
+  toastification: 1.0.0
+  http_parser: 4.0.2
+  file_picker: 5.5.0
+  mime: 1.0.4
+  photo_view: 0.14.0
+  voice_message_package: 1.0.9
+  just_audio: 0.9.34
+  flutter_downloader: 1.11.0
+  cached_network_image: 3.2.3
+  flutter_file_downloader: 1.2.1
+  open_file: 3.3.0
+  webview_flutter: 4.2.2
+  shared_preferences: 2.2.2
+  permission_handler: 10.4.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   test: ^1.20.1
-
-  flutter_launcher_icons: ^0.14.0
-
-
+  flutter_launcher_icons: ^0.13.1
 
 flutter_icons:
   image_path: "graphics/icon.png"
   android: true
   ios: false
-  adaptive_icon_background: "#FFFFFF" # Background color or path to background image
+  adaptive_icon_background: "#FFFFFF"
   adaptive_icon_foreground: "assets/images/icon.png"
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
 
-# The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
     - graphics/header.jpg
     - assets/audio/sample.mp3
     - assets/images/
-  #  - images/a_dot_ham.jpeg
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.io/assets-and-images/#resolution-aware.
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.io/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.io/custom-fonts/#from-packages
