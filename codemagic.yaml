@@ -9,14 +9,19 @@ workflows:
         - google-services
     scripts:
       - name: Decode google-services.json
-        script: echo $GSERVICES_JSON_B64 | base64 --decode > $CM_BUILD_DIR/android/app/google-services.json
+        script: |
+          echo $GSERVICES_JSON_B64 | base64 --decode > $CM_BUILD_DIR/android/app/google-services.json
       - name: Change package name
-        script: sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
+        script: |
+          sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
       - name: Downgrade problematic package
-        script: sed -i.bak 's/flutter_downloader: \^1.12.0/flutter_downloader: \^1.11.0/g' $CM_BUILD_DIR/pubspec.yaml
+        script: |
+          sed -i.bak 's#flutter_downloader: \^1.12.0#flutter_downloader: \^1.11.0#g' $CM_BUILD_DIR/pubspec.yaml
       - name: Get Flutter packages
-        script: flutter pub get
+        script: |
+          flutter pub get
       - name: Build APK
-        script: flutter build apk --release
+        script: |
+          flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
