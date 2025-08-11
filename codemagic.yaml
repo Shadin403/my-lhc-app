@@ -14,7 +14,7 @@ workflows:
       - name: Change package name
         script: |
           sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
-      - name: Add dependency overrides to fix all conflicts
+      - name: Add dependency overrides to fix ALL conflicts (FINAL ATTEMPT)
         script: |
           echo "
           dependency_overrides:
@@ -23,6 +23,7 @@ workflows:
             file_picker: 5.5.0
             flutter_downloader: 1.11.0
             toastification: 1.0.0
+            path_provider: 2.1.2
           " >> $CM_BUILD_DIR/pubspec.yaml
       - name: Get Flutter packages
         script: |
