@@ -13,9 +13,13 @@ workflows:
       - name: Change package name
         script: |
           sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
-      - name: Create dummy key.properties to bypass signing error (THE REAL FIX)
+      - name: Create Dummy Keystore and Properties (THE REAL, FINAL, BULLETPROOF FIX)
         script: |
-          touch $CM_BUILD_DIR/android/key.properties
+          keytool -genkey -v -keystore $CM_BUILD_DIR/android/app/dummy.jks -alias dummy -keyalg RSA -keysize 2048 -validity 10000 -storepass dummypass -keypass dummypass -dname "CN=Dummy, OU=Dummy, O=Dummy, L=Dummy, S=Dummy, C=US"
+          echo "storePassword=dummypass
+          keyPassword=dummypass
+          keyAlias=dummy
+          storeFile=dummy.jks" > $CM_BUILD_DIR/android/app/key.properties
       - name: Get Flutter packages
         script: |
           flutter pub get
