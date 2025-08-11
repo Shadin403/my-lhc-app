@@ -13,7 +13,7 @@ workflows:
       - name: Change package name
         script: |
           sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
-      - name: Create Dummy Keystore and Properties (THE REAL, FINAL, BULLETPROOF FIX)
+      - name: Create Dummy Keystore and Properties (THE REAL FIX)
         script: |
           keytool -genkey -v -keystore $CM_BUILD_DIR/android/app/dummy.jks -alias dummy -keyalg RSA -keysize 2048 -validity 10000 -storepass dummypass -keypass dummypass -dname "CN=Dummy, OU=Dummy, O=Dummy, L=Dummy, S=Dummy, C=US"
           echo "storePassword=dummypass
