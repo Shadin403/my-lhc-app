@@ -13,9 +13,9 @@ workflows:
       - name: Change package name
         script: |
           sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
-      - name: Remove release signing requirement (FINAL FIX)
+      - name: Create dummy key.properties to bypass signing error (THE REAL FIX)
         script: |
-          sed -i.bak "s/signingConfig signingConfigs.release//g" $CM_BUILD_DIR/android/app/build.gradle
+          touch $CM_BUILD_DIR/android/key.properties
       - name: Get Flutter packages
         script: |
           flutter pub get
