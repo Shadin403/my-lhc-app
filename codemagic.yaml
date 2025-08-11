@@ -3,7 +3,8 @@ workflows:
     name: Android Workflow
     instance_type: mac_mini_m1
     environment:
-      flutter: 3.19.0
+      flutter: 3.10.6
+      java: 11
       groups:
         - google-services
     scripts:
@@ -11,6 +12,8 @@ workflows:
         script: echo $GSERVICES_JSON_B64 | base64 --decode > $CM_BUILD_DIR/android/app/google-services.json
       - name: Change package name
         script: sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
+      - name: Downgrade problematic package
+        script: sed -i.bak 's/flutter_downloader: \^1.12.0/flutter_downloader: \^1.11.0/g' $CM_BUILD_DIR/pubspec.yaml
       - name: Get Flutter packages
         script: flutter pub get
       - name: Build APK
