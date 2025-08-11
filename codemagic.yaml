@@ -3,7 +3,8 @@ workflows:
     name: Android Workflow
     instance_type: mac_mini_m1
     environment:
-      flutter: 3.16.9
+      flutter: 3.10.6
+      java: 11
       groups:
         - google-services
     scripts:
@@ -13,9 +14,11 @@ workflows:
       - name: Change package name
         script: |
           sed -i.bak 's/com.livehelperchat.mobile/com.dev_shadin.livechat/g' $CM_BUILD_DIR/android/app/build.gradle
-      - name: Downgrade problematic packages
+      - name: Downgrade ALL conflicting packages
         script: |
           sed -i.bak 's/flutter_downloader: \^1.12.0/flutter_downloader: ^1.11.0/g' $CM_BUILD_DIR/pubspec.yaml
+          sed -i.bak 's/mime: \^2.0.0/mime: ^1.0.4/g' $CM_BUILD_DIR/pubspec.yaml
+          sed -i.bak 's/file_picker: >=8.1.0/file_picker: ^5.5.0/g' $CM_BUILD_DIR/pubspec.yaml
       - name: Get Flutter packages
         script: |
           flutter pub get
